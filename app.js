@@ -35,7 +35,7 @@ const citaObj = {
 
 function datosCita (event) {
    citaObj[event.target.name] = event.target.value;
-   console.log(citaObj);
+ 
 
 };
 
@@ -43,7 +43,15 @@ function datosCita (event) {
 function submitCita(event) {
    event.preventDefault();
 
-   console.log('enviando datos del formulario....')
+// Validar los campos del formulario
+   const { paciente, propietario, email, fecha, sintomas } = citaObj
+
+   if (paciente.trim() === '' || propietario.trim() === '' || email.trim() === '' || fecha.trim() === '' || sintomas.trim() === '') {
+      console.log("Todos los campos son obligatorios")
+      return
+   }
+
+
 
 };
 
