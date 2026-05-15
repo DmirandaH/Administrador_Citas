@@ -44,14 +44,23 @@ function submitCita(event) {
    event.preventDefault();
 
 // Validar los campos del formulario
-   const { paciente, propietario, email, fecha, sintomas } = citaObj
+ 
+/*const { paciente, propietario, email, fecha, sintomas } = citaObj
 
    if (paciente.trim() === '' || propietario.trim() === '' || email.trim() === '' || fecha.trim() === '' || sintomas.trim() === '') {
       console.log("Todos los campos son obligatorios")
       return
    }
+*/
 
+// Validar los campos del formulario optimizando el código anterior  (Object.values)
+// .some
 
+if(Object.values(citaObj).some(valor => valor.trim() === '')) {
+   console.log("Todos los campos son obligatorios")
+   return
+
+   }
 
 };
 
