@@ -123,8 +123,19 @@ class AdminCitas {
          paciente.innerHTML = `<span class="font-bold uppercase"> Paciente: </span> ${cita.paciente}`
 
 
+         const propietario = document.createElement('p');
+         propietario.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+         propietario.innerHTML = `<span class="font-bold uppercase"> Propietario: </span> ${cita.propietario}`
+
+         const email = document.createElement('p');
+         email.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+         email.innerHTML = `<span class="font-bold uppercase"> Email: </span> ${cita.email}`
+
+
          //Inyectar al HTML
          divCita.appendChild(paciente);
+         divCita.appendChild(propietario);
+         divCita.appendChild(email);
 
          contenedorCitas.appendChild(divCita);
 
