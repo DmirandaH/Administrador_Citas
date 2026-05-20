@@ -131,12 +131,21 @@ class AdminCitas {
          email.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
          email.innerHTML = `<span class="font-bold uppercase"> Email: </span> ${cita.email}`
 
+         const fecha = document.createElement('p');
+         fecha.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+         fecha.innerHTML = `<span class= "font-bold uppercase"> Fecha: </span> ${cita.fecha}`
+
+         const sintomas = document.createElement('p');
+         sintomas.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+         sintomas.innerHTML = `<span class = "font-bold uppercase"> Sintomas: </span> ${cita.sintomas}`
+
 
          //Inyectar al HTML
          divCita.appendChild(paciente);
          divCita.appendChild(propietario);
          divCita.appendChild(email);
-
+         divCita.appendChild(fecha);
+         divCita.appendChild(sintomas);
          contenedorCitas.appendChild(divCita);
 
       })
@@ -154,6 +163,8 @@ function datosCita (event) {
 };
 
 const citas = new AdminCitas()
+
+
 function submitCita(event) {
    event.preventDefault();
 
@@ -181,8 +192,33 @@ if(Object.values(citaObj).some(valor => valor.trim() === '')) {
    }
 
    citas.agregar(citaObj)
+   formulario.reset()
+   reiniciarObjetoCita()
 
-};
+}
+
+
+function reiniciarObjetoCita() {
+
+   //Reiniciar el objeto 
+
+   //citaObj.paciente = '';
+  // citaObj.propietario = '';
+   //citaObj.email = '';
+  // citaObj.fecha = '';
+  // citaObj.sintomas = '';
+
+  Object.assign(citaObj, {
+   paciente: '',
+   propietario: '',
+   email: '',
+   fecha: '',
+   sintomas: ''
+
+  })
+
+
+}
 
 
 
