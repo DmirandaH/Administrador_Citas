@@ -191,9 +191,13 @@ if(Object.values(citaObj).some(valor => valor.trim() === '')) {
 
    }
 
-   citas.agregar(citaObj)
+   citas.agregar({...citaObj})
    formulario.reset()
    reiniciarObjetoCita()
+   new Notificacion({
+      texto: 'Paciente registrado',
+      tipo: 'exito'
+   })
 
 }
 
