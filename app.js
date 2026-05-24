@@ -28,6 +28,7 @@ formulario.addEventListener('submit', submitCita);
 // Objeto de Cita 
 
 const citaObj = {
+    id: generarId(),
     paciente: '',
     propietario: '',
     email: '',
@@ -105,6 +106,8 @@ class AdminCitas {
    agregar(cita) {
       this.citas = [...this.citas, cita]
       this.mostrar()
+
+      console.log(this.citas)
       
    }
 
@@ -147,10 +150,11 @@ class AdminCitas {
          const btnEditar = document.createElement('button');
          btnEditar.classList.add('py-2', 'px-10', 'bg-indigo-600', 'hover:bg-indigo-700', 'text-white', 'font-bold', 'uppercase', 'rounded-lg', 'flex', 'items-center', 'gap-2', 'btn-editar');
          btnEditar.innerHTML = 'Editar <svg fill="none" class="h-5 w-5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>'
-         btnEditar.onclick = () => {
-            alert('Diste click en editar....')
+         const clone = structuredClone(cita)
+         btnEditar.onclick = () => cargarEdicion(clone);
+            
 
-         }
+         
 
          const btnEliminar = document.createElement('button');
          btnEliminar.classList.add('py-2', 'px-10', 'bg-red-600', 'hover:bg-red-700', 'text-white', 'font-bold', 'uppercase', 'rounded-lg', 'flex', 'items-center', 'gap-2');
@@ -194,6 +198,10 @@ const citas = new AdminCitas()
 function submitCita(event) {
    event.preventDefault();
 
+
+
+  
+
 // Validar los campos del formulario
  
 /*const { paciente, propietario, email, fecha, sintomas } = citaObj
@@ -232,7 +240,7 @@ if(Object.values(citaObj).some(valor => valor.trim() === '')) {
 function reiniciarObjetoCita() {
 
    //Reiniciar el objeto 
-
+   //citaObj.id = generarId(),
    //citaObj.paciente = '';
   // citaObj.propietario = '';
    //citaObj.email = '';
@@ -240,6 +248,7 @@ function reiniciarObjetoCita() {
   // citaObj.sintomas = '';
 
   Object.assign(citaObj, {
+   id: generarId(),
    paciente: '',
    propietario: '',
    email: '',
@@ -248,6 +257,18 @@ function reiniciarObjetoCita() {
 
   })
 
+}
+
+
+  // Genera un ID unico sin la necesidad de instalar librerias de npm
+
+function generarId() {
+   return Math.random().toString(36).substring(2) + Date.now();
+  }
+
+
+function cargarEdicion (cita) {
+   console.log(cita)
 
 }
 
