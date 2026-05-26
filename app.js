@@ -24,6 +24,9 @@ sintomasInput.addEventListener('change', datosCita);
 formulario.addEventListener('submit', submitCita);
 
 
+let editando = false
+
+
 
 // Objeto de Cita 
 
@@ -225,14 +228,21 @@ if(Object.values(citaObj).some(valor => valor.trim() === '')) {
 
    }
 
-   citas.agregar({...citaObj})
+   if (editando) {
+      console.log('Editando Registro')
+   } else {
+       citas.agregar({...citaObj})
+       new Notificacion({
+       texto: 'Paciente registrado',
+       tipo: 'exito'
+   })
+
+   }
+
    formulario.reset()
    reiniciarObjetoCita()
 
-   new Notificacion({
-      texto: 'Paciente registrado',
-      tipo: 'exito'
-   })
+   
 
 }
 
@@ -264,11 +274,22 @@ function reiniciarObjetoCita() {
 
 function generarId() {
    return Math.random().toString(36).substring(2) + Date.now();
+
+
   }
 
 
 function cargarEdicion (cita) {
-   console.log(cita)
+   Object.assign(citaObj, cita)
+   pacienteInput.value = cita.paciente
+   propietarioInput.value = cita.propietario
+   emailInput.value = cita.email
+   fechaInput.value = cita.fecha
+   sintomasInput.value = cita.sintomas
+
+   editando = true
+
+   
 
 }
 
