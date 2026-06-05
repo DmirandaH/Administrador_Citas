@@ -4,6 +4,7 @@ const pacienteInput = document.querySelector('#paciente');
 const propietarioInput = document.querySelector('#propietario');
 const emailInput = document.querySelector('#email');
 const fechaInput = document.querySelector('#fecha');
+const telInput = document.querySelector('#telefono');
 const sintomasInput = document.querySelector('#sintomas');
 
 const formulario = document.querySelector('#formulario-cita');
@@ -18,6 +19,7 @@ const contenedorCitas = document.querySelector('#citas');
 pacienteInput.addEventListener('change', datosCita);
 propietarioInput.addEventListener('change', datosCita);
 emailInput.addEventListener('change', datosCita);
+telInput.addEventListener('change', datosCita);
 fechaInput.addEventListener('change', datosCita);
 sintomasInput.addEventListener('change', datosCita);
 
@@ -35,6 +37,7 @@ const citaObj = {
     paciente: '',
     propietario: '',
     email: '',
+    telefono: '',
     fecha: '',
     sintomas: ''
 };
@@ -156,6 +159,10 @@ class AdminCitas {
          email.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
          email.innerHTML = `<span class="font-bold uppercase"> Email: </span> ${cita.email}`
 
+         const telefono = document.createElement('p');
+         telefono.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
+         telefono.innerHTML = `<span class="font-bold uppercase"> Telefono: </span> ${cita.telefono}`
+
          const fecha = document.createElement('p');
          fecha.classList.add('font-normal', 'mb-3', 'text-gray-700', 'normal-case')
          fecha.innerHTML = `<span class= "font-bold uppercase"> Fecha: </span> ${cita.fecha}`
@@ -194,6 +201,7 @@ class AdminCitas {
          divCita.appendChild(paciente);
          divCita.appendChild(propietario);
          divCita.appendChild(email);
+         divCita.appendChild(telefono);
          divCita.appendChild(fecha);
          divCita.appendChild(sintomas);
          divCita.appendChild(contenedorBotones);
