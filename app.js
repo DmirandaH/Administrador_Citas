@@ -294,6 +294,7 @@ function reiniciarObjetoCita() {
    paciente: '',
    propietario: '',
    email: '',
+   telefono: '',
    fecha: '',
    sintomas: ''
 
@@ -316,6 +317,7 @@ function cargarEdicion (cita) {
    pacienteInput.value = cita.paciente
    propietarioInput.value = cita.propietario
    emailInput.value = cita.email
+   telInput.value = cita.telefono
    fechaInput.value = cita.fecha
    sintomasInput.value = cita.sintomas
 
